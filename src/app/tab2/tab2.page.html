@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Edit List
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,6 +12,16 @@
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
+    <form (ngSubmit)="addItem()">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="input.item" id="item" name="item" placeholder="type something here"></ion-input>
+      </ion-item>
+      <button ion-button type="submit">Add</button>
+    </form>
+    <br />
+    <form (ngSubmit)="clearList()">
+      <button ion-button type="submit">Clear List</button>
+    </form>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
 </ion-content>
