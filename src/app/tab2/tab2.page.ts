@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UtilProvider } from '../shared/util-provider.ts';
+import { UtilProvider } from '../shared/util-provider';
 
 @Component({
   selector: 'app-tab2',
@@ -13,13 +13,14 @@ export class Tab2Page {
 console.log('construct tab2');
   }
 
-  input = {}
+  input = {
+    item: ''
+  }
 
   addItem() {
     this.UtilProvider.addItem(this.input.item);
-    var formEl = document.getElementById('item');
-    formEl.value = '';
-       
+    //this.UtilProvider.cycleItem(this.input.item);
+    this.input.item = '';
   }
 
   clearList() {

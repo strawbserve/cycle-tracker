@@ -12,7 +12,7 @@
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
-    <form (ngSubmit)="addItem()">
+    <form id="itemForm" (ngSubmit)="addItem()">
       <ion-item>
         <ion-input type="text" [(ngModel)]="input.item" id="item" name="item" placeholder="type something here"></ion-input>
       </ion-item>

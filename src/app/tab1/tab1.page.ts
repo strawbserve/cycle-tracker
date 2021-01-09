@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { UtilProvider } from '../shared/util-provider.ts';
+import { Storage } from '@ionic/storage';
+import { UtilProvider } from '../shared/util-provider';
 
 @Component({
   selector: 'app-tab1',
@@ -9,13 +10,38 @@ import { UtilProvider } from '../shared/util-provider.ts';
 })
 export class Tab1Page {
 
-  constructor(private UtilProvider: UtilProvider) {
+  myList = []
+
+  constructor(
+    private UtilProvider: UtilProvider,
+    private storage: Storage
+    ) {
 console.log('construct tab1');
   }
 
   ionViewDidEnter() {
-console.log('ionViewDidEnter');
-    this.myList = this.UtilProvider.getList();
+console.log('ionViewDidEnter tab1');
+    this.UtilProvider.getList().then((list) => {
+console.log('list', list);
+      if (null == list) { list = []; }
+      this.myList = list;
+    });
+  }
+
+  cycle(item) {
+console.log('cycle', item);
+    this.UtilProvider.cycleItem(item);
+  }
+
+  reset(item) {
+console.log('reset', item);
+    this.UtilProvider.resetItem(item);
+    this.UtilProvider.cycleItem(item);
+  }
+
+  calculateFrequency(item) {
+//console.log('calculateFrequency', item);
+    return this.UtilProvider.calculateFrequency(item);
   }
 
 }

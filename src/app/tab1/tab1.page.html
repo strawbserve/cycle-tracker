@@ -12,8 +12,20 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-item  *ngFor ="let item of myList">
-    <div>{{item}}</div>
-  </ion-item>
+
+  <ion-list  *ngFor ="let item of myList">
+    <ion-item-sliding>
+      <ion-item-options side="start">
+        <ion-item-option (click)="cycle(item)">Cycle</ion-item-option>
+      </ion-item-options>
+      <ion-item>
+        <ion-label>{{item.name}}</ion-label>
+        <ion-badge>{{item.frequency}} days</ion-badge>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="reset(item)">Reset</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>
