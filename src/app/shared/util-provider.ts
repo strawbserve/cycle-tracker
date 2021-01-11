@@ -50,11 +50,41 @@ export class UtilProvider {
         for (var i=0; i<list.length; i++) {
             if (list[i].name == obj.name) {
                 list[i].cycles = obj.cycles;
-                list[i].frequency = this.calculateFrequency(obj.cycles);
+                list[i].frequency = obj.frequency;
             }
         }
         this.storage.set(this.listName, list);
     });
+  }
+
+  resetItem(item) {
+    item.cycles = [];
+    item.frequency = 0;
+    this.cycleItem(item);
+  }
+
+  removeItem(obj) {
+//console.log('UtilProvider.removeItem', obj);
+    var myPromise = this.getList().then((list) => {
+        if (null == list) {
+            return;
+        }
+        var newList = [];
+        for (var i=0; i<list.length; i++) {
+            if (list[i].name != obj.name) {
+                newList.push(list[i]);
+            }
+        }
+        this.storage.set(this.listName, newList);
+        //window.location.reload();
+    });
+    return myPromise;
+  }
+
+  clearList() {
+//console.log('UtilProvider.clearList');
+    this.storage.clear();
+    alert('List cleared.');
   }
 
   calculateFrequency(cycles) {
@@ -75,18 +105,6 @@ export class UtilProvider {
       frequency = Number((average/60/60/24).toPrecision(1));
     }
     return frequency;
-  }
-
-  clearList() {
-//console.log('UtilProvider.clearList');
-    this.storage.clear();
-    alert('List cleared.');
-  }
-
-  resetItem(item) {
-    item.cycles = [];
-    item.frequency = 0;
-    this.cycleItem(item);
   }
 
 }

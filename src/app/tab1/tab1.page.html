@@ -23,9 +23,9 @@
         <ion-badge>{{item.frequency}} days</ion-badge>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="reset(item)">Reset</ion-item-option>
+        <ion-item-option color="danger" (click)="remove(item)">Delete</ion-item-option>
+        <ion-item-option color="warning" (click)="reset(item)">Reset</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-
 </ion-content>

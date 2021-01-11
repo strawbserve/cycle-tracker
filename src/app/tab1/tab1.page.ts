@@ -39,6 +39,14 @@ console.log('reset', item);
     this.UtilProvider.cycleItem(item);
   }
 
+  remove(item) {
+console.log('remove', item);
+    var list = this.UtilProvider.removeItem(item);
+    list.then(() => {
+        this.ionViewDidEnter();
+    });
+  }
+
   calculateFrequency(item) {
 //console.log('calculateFrequency', item);
     return this.UtilProvider.calculateFrequency(item);
