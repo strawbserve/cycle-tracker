@@ -9,19 +9,19 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Items</ion-title>
     </ion-toolbar>
   </ion-header>
-    <form id="itemForm" (ngSubmit)="addItem()">
-      <ion-item>
-        <ion-input type="text" [(ngModel)]="input.item" id="item" name="item" placeholder="type something here"></ion-input>
-      </ion-item>
-      <button ion-button type="submit">Add</button>
-    </form>
-    <br />
-    <form (ngSubmit)="clearList()">
-      <button ion-button type="submit">Clear List</button>
-    </form>
+  <form id="itemForm" (ngSubmit)="addItem()">
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="input.item" id="item" name="item" placeholder="type something here"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit">Add</ion-button>
+  </form>
+  <br />
+  <form (ngSubmit)="clearList()">
+    <ion-button expand="block" type="submit">Clear List</ion-button>
+  </form>
 
 
 </ion-content>

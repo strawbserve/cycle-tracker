@@ -4,14 +4,16 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class UtilProvider {
 
-  const listName = 'myList';
-
   constructor(private storage: Storage) {
+  }
+
+  getListName() {
+    return 'myList';
   }
 
   getList() {
 //console.log('listName', this.listName);
-    var list = this.storage.get(this.listName);
+    var list = this.storage.get(this.getListName());
     return list;
   }
 
@@ -28,7 +30,7 @@ export class UtilProvider {
           list = [];
         }
         list.push(itemObj);
-        this.storage.set(this.listName, list);
+        this.storage.set(this.getListName(), list);
       });
     }
   }
@@ -53,7 +55,7 @@ export class UtilProvider {
                 list[i].frequency = obj.frequency;
             }
         }
-        this.storage.set(this.listName, list);
+        this.storage.set(this.getListName(), list);
     });
   }
 
@@ -75,7 +77,7 @@ export class UtilProvider {
                 newList.push(list[i]);
             }
         }
-        this.storage.set(this.listName, newList);
+        this.storage.set(this.getListName(), newList);
         //window.location.reload();
     });
     return myPromise;
